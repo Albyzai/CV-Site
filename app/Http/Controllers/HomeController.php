@@ -20,11 +20,13 @@ class HomeController extends Controller
     public function index(){
 
         $inspirations = Inspiration::all();
-        $experiences = Experience::all();
-        $educations = Education::all();
+        $experiences = Experience::orderBy('to', 'desc')->get();
+        $educations = Education::orderBy('to', 'desc')->get();;
         $interests = Interest::all();
         $projects = Project::all();
 
+   
+        
         return view('welcome', compact('inspirations', 'experiences', 'interests', 'projects', 'educations'));
 
     }
