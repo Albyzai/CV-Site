@@ -11,9 +11,10 @@ class ContactRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return true;
+        // Reject if honeypot field is filled (bot detected)
+        return empty($this->input('website'));
     }
 
     /**
@@ -21,13 +22,25 @@ class ContactRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
-            'name' => 'required|max: 255',
-            'email' => 'required|email|max: 255',
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
             'message' => 'required',
+            'website' => 'max:0', // Honeypot must be empty
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'website.max' => 'Spam detected.',
         ];
     }
 }

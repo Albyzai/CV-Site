@@ -12,6 +12,11 @@
                     <form class="col-md-12" method="POST" action="/">
                         {{ csrf_field() }}
 
+                        <!-- Honeypot field - hidden from humans, bots will fill it -->
+                        <div style="position: absolute; left: -9999px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
                         @if(session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}

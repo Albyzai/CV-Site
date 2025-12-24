@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +14,8 @@
 |
 */
 
+Route::get('/', [HomeController::class, 'index']);
 
+Route::post('/', [HomeController::class, 'mail']);
 
-Route::get('/', 'HomeController@index');
-
-Route::post('/',  'HomeController@mail');
-
-Route::get('filter/{category}', 'HomeController@filter');
+Route::get('filter/{category}', [HomeController::class, 'filter']);
