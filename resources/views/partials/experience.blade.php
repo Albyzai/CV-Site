@@ -37,9 +37,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-7">
-                                                    <p>
-                                                        {{ $experience->text }}
-                                                    </p>
+                                                    {!! $experience->text !!}
                                                 </div>
                                             </div>
                                             <!-- /o-grid -->
