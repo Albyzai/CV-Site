@@ -36,7 +36,7 @@
                                                         {{ $experience->location }}
                                                     </div>
                                                 </div>
-                                                <div class="col-md-7">
+                                                <div class="col-md-7" style="color: #c1c1c1;">
                                                     {!! $experience->text !!}
                                                 </div>
                                             </div>
